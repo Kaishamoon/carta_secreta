@@ -1,0 +1,143 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carta Secreta by Kare :3</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fce4ec;
+    }
+    .screen {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .active {
+      display: flex;
+    }
+    .password-screen {
+      flex-direction: column;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .key {
+      background-color: #f8bbd0;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .key:hover {
+      background-color: #8fc3f4;
+    }
+    .input-display {
+      font-size: 24px;
+      margin-top: 20px;
+      letter-spacing: 8px;
+    }
+    .notepad {
+      background-color: #fff0f6;
+      border: 3px solid #f8bbd0;
+      padding: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      line-height: 1.6;
+    }
+    .notepad h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="passwordScreen" class="screen password-screen active">
+  <h2>🔒 Enter password</h2>
+  <div class="input-display" id="inputDisplay">••••</div>
+  <div class="keypad">
+    <button class="key" onclick="enterDigit('1')">1</button>
+    <button class="key" onclick="enterDigit('2')">2</button>
+    <button class="key" onclick="enterDigit('3')">3</button>
+    <button class="key" onclick="enterDigit('4')">4</button>
+    <button class="key" onclick="enterDigit('5')">5</button>
+    <button class="key" onclick="enterDigit('6')">6</button>
+    <button class="key" onclick="enterDigit('7')">7</button>
+    <button class="key" onclick="enterDigit('9')">9</button>
+    <button class="key" onclick="enterDigit('8')">8</button>
+    <div></div>
+    <button class="key" onclick="enterDigit('0')">0</button>
+    <div></div>
+  </div>
+</div>
+<div id="notepadScreen" class="screen">
+  <div class="notepad">
+    <h3>📅 01 Julio 2025 💕</h3>
+    <h4>💌 Mi amor bonito 🍰 </h4> 
+    <p>
+      ˗ˏˋ ♡ ˎˊ˗ Un día como hoy nació la persona que cambió por completo la forma en que veo el mundo. 
+      Me enseñó lo hermoso que es amar y ser amada. El amor que me tiene es tan especial que no podría 
+      imaginar mi vida sin él. ˙ᵕ˙
+    </p>    
+    <p>
+      Mi amor bonito, mi dulce razón de felicidad, eres lo que más adoro en este mundo, 
+      lo que más aprecio y amo incondicionalmente.Deseo, con todo mi corazón y mi alma, que este día 
+      de tu cumpleaños sea el más especial del mundo, porque tu existencia es única e imprescindible en 
+      la vida de muchos, y especialmente en la mía. ˃ᴗ˂
+    </p>
+    <p>
+      Le pido a Dios que te cuide siempre, en cada paso que des, en cada decisión que tomes y en cada 
+      nuevo día que vivas. Le ruego, con todo mi ser, que tu linda sonrisa, tus dulces besos y tus cálidos 
+      abrazos nunca me falten. ⋆˙⟡♡
+    </p>
+    <p>
+      El amor que compartimos es tan único y especial que nada en este mundo podría compararse. 
+      Al verte, mi corazón se llena de alegría y rebosa de amor. A tu lado siento paz. Tus cuidados, 
+      tu amor y tu simple existencia son suficientes para seguir adelante. ⁺·₊˚♡˚₊‧⁺˖
+    </p>
+    <p>
+      Te amo demasiado, te amo inmensamente, te amo con el alma, mi amor, mi vida entera. Tu felicidad 
+      es la mía, y le doy gracias a Dios por haberte conocido y por permitirme formar parte de tu vida.
+      જ⁀➴ ١٥٧٤♡   
+    </p>
+    <p>
+        Hoy te deseo un feliz cumpleaños, amor de mi vida y futuro dueño de toda mi descendencia.˗ˏˋ ♡ ˎˊ˗
+    </p>
+  </div>
+</div>
+<script>
+  const correctPassword = '0107';
+  let input = '';
+  function enterDigit(digit) {
+    if (input.length < 4) {
+      input += digit;
+    }
+    const display = document.getElementById('inputDisplay');
+    display.textContent = input.padEnd(4, '•');
+    if (input.length === 4) {
+      if (input === correctPassword) {
+        document.getElementById('passwordScreen').classList.remove('active');
+        document.getElementById('notepadScreen').classList.add('active');
+      } else {
+        alert('Contraseña incorecta, intenta de nuevo');
+        input = '';
+        display.textContent = '••••';
+      }
+    }
+  }
+</script>
+</body>
+</html>
